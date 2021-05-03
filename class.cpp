@@ -33,31 +33,31 @@ TM::TM(TM&& a){
 	this->d = a.d;
 	this->t = a.t;
 }
-DATE TM::date() { //метод date() возвращает дату в виде структуры
+DATE TM::date() { //РјРµС‚РѕРґ date() РІРѕР·РІСЂР°С‰Р°РµС‚ РґР°С‚Сѓ РІ РІРёРґРµ СЃС‚СЂСѓРєС‚СѓСЂС‹
 	time_t timer = std::time(&timer);
-	struct tm tabl_date;	// создаём структуру содержащая календарную дату и время, разбитую на составляющие
-	localtime_s(&tabl_date, &timer); //заполняем tabl_date данными из timer
+	struct tm tabl_date;	// СЃРѕР·РґР°С‘Рј СЃС‚СЂСѓРєС‚СѓСЂСѓ СЃРѕРґРµСЂР¶Р°С‰Р°СЏ РєР°Р»РµРЅРґР°СЂРЅСѓСЋ РґР°С‚Сѓ Рё РІСЂРµРјСЏ, СЂР°Р·Р±РёС‚СѓСЋ РЅР° СЃРѕСЃС‚Р°РІР»СЏСЋС‰РёРµ
+	localtime_s(&tabl_date, &timer); //Р·Р°РїРѕР»РЅСЏРµРј tabl_date РґР°РЅРЅС‹РјРё РёР· timer
 
 	DATE n;
 	n = tabl_date;
 	return n;
 }
-TIME TM::time() { //метод time() возвращает время в виде структуры
+TIME TM::time() { //РјРµС‚РѕРґ time() РІРѕР·РІСЂР°С‰Р°РµС‚ РІСЂРµРјСЏ РІ РІРёРґРµ СЃС‚СЂСѓРєС‚СѓСЂС‹
 	time_t timer = std::time(&timer);
-	struct tm tabl_date;	// создаём структуру содержащая календарную дату и время, разбитую на составляющие
-	localtime_s(&tabl_date, &timer); //заполняем tabl_date данными из timer
+	struct tm tabl_date;	// СЃРѕР·РґР°С‘Рј СЃС‚СЂСѓРєС‚СѓСЂСѓ СЃРѕРґРµСЂР¶Р°С‰Р°СЏ РєР°Р»РµРЅРґР°СЂРЅСѓСЋ РґР°С‚Сѓ Рё РІСЂРµРјСЏ, СЂР°Р·Р±РёС‚СѓСЋ РЅР° СЃРѕСЃС‚Р°РІР»СЏСЋС‰РёРµ
+	localtime_s(&tabl_date, &timer); //Р·Р°РїРѕР»РЅСЏРµРј tabl_date РґР°РЅРЅС‹РјРё РёР· timer
 
 	TIME n;
-	n = tabl_date; //заполняем n данными из tabl_date
+	n = tabl_date; //Р·Р°РїРѕР»РЅСЏРµРј n РґР°РЅРЅС‹РјРё РёР· tabl_date
 	return n;
 }
-void TM::the_time() { //метод текущего времени
+void TM::the_time() { //РјРµС‚РѕРґ С‚РµРєСѓС‰РµРіРѕ РІСЂРµРјРµРЅРё
 	this->t = time();
 }
-void TM::the_date() {//метод текущей даты
+void TM::the_date() {//РјРµС‚РѕРґ С‚РµРєСѓС‰РµР№ РґР°С‚С‹
 	this->d = date();
 }
-bool TM::CorrectDate(int day, int mon, int data) { //статический метод проверки набора чисел на корректность дате
+bool TM::CorrectDate(int day, int mon, int data) { //СЃС‚Р°С‚РёС‡РµСЃРєРёР№ РјРµС‚РѕРґ РїСЂРѕРІРµСЂРєРё РЅР°Р±РѕСЂР° С‡РёСЃРµР» РЅР° РєРѕСЂСЂРµРєС‚РЅРѕСЃС‚СЊ РґР°С‚Рµ
 	if ((day > 0) && (day <= 31)) {
 		if ((mon > 0) && (mon <= 12)) {
 			if (data >= 1900) {
@@ -67,7 +67,7 @@ bool TM::CorrectDate(int day, int mon, int data) { //статический метод проверки 
 	}
 	return false;
 }
-bool TM::CorrectTime(int sec, int min, int hour) { //статический метод проверки набора чисел на корректность времени
+bool TM::CorrectTime(int sec, int min, int hour) { //СЃС‚Р°С‚РёС‡РµСЃРєРёР№ РјРµС‚РѕРґ РїСЂРѕРІРµСЂРєРё РЅР°Р±РѕСЂР° С‡РёСЃРµР» РЅР° РєРѕСЂСЂРµРєС‚РЅРѕСЃС‚СЊ РІСЂРµРјРµРЅРё
 	if ((sec >= 0) && (sec <= 23)) {
 		if ((min >= 0) && (min <= 59)) {
 			if ((hour >= 0) && (hour <= 23)) {
@@ -78,11 +78,11 @@ bool TM::CorrectTime(int sec, int min, int hour) { //статический метод проверки 
 	return false;
 }
 
-void TM::Print(string pattern) { //метод печати по заданному шаблону
+void TM::Print(string pattern) { //РјРµС‚РѕРґ РїРµС‡Р°С‚Рё РїРѕ Р·Р°РґР°РЅРЅРѕРјСѓ С€Р°Р±Р»РѕРЅСѓ
 	cout << DateFromString(pattern);
 }
 
-string TM::DateFromString(string pattern) {  //метод перевода даты в строку по заданному формату. Проверить метод на примерах печати в файл и в консоль
+string TM::DateFromString(string pattern) {  //РјРµС‚РѕРґ РїРµСЂРµРІРѕРґР° РґР°С‚С‹ РІ СЃС‚СЂРѕРєСѓ РїРѕ Р·Р°РґР°РЅРЅРѕРјСѓ С„РѕСЂРјР°С‚Сѓ. РџСЂРѕРІРµСЂРёС‚СЊ РјРµС‚РѕРґ РЅР° РїСЂРёРјРµСЂР°С… РїРµС‡Р°С‚Рё РІ С„Р°Р№Р» Рё РІ РєРѕРЅСЃРѕР»СЊ
 	int i = 0;
 	char b;
 	string s;
@@ -112,13 +112,13 @@ string TM::DateFromString(string pattern) {  //метод перевода даты в строку по з
 	return s;
 }
 
-DATE TM::dat_date(string strok, string pattern) {//статический метод получения даты из строки, метод должен получать 2 параметра строку с датой и строку формата
+DATE TM::dat_date(string strok, string pattern) {//СЃС‚Р°С‚РёС‡РµСЃРєРёР№ РјРµС‚РѕРґ РїРѕР»СѓС‡РµРЅРёСЏ РґР°С‚С‹ РёР· СЃС‚СЂРѕРєРё, РјРµС‚РѕРґ РґРѕР»Р¶РµРЅ РїРѕР»СѓС‡Р°С‚СЊ 2 РїР°СЂР°РјРµС‚СЂР° СЃС‚СЂРѕРєСѓ СЃ РґР°С‚РѕР№ Рё СЃС‚СЂРѕРєСѓ С„РѕСЂРјР°С‚Р°
 	DATE dat;
 	dat.reset();
 	if (strok.size() >= pattern.size()) {
 		int i = 0, k = 0;
 		while ((i < (int)strok.size()) && (k < (int)pattern.size())) {
-			if ((strok[i] >= '0') && (strok[i] <= '9')) { //если символ является числом
+			if ((strok[i] >= '0') && (strok[i] <= '9')) { //РµСЃР»Рё СЃРёРјРІРѕР» СЏРІР»СЏРµС‚СЃСЏ С‡РёСЃР»РѕРј
 				if (pattern[k] == 'D') {
 					dat.day *= 10;
 					dat.day += (strok[i]-'0');
@@ -139,7 +139,7 @@ DATE TM::dat_date(string strok, string pattern) {//статический метод получения д
 					k = 0;
 				}
 			}
-			else if ((pattern[k] < 'A') || (pattern[k] > 'Z')) { //защита от букв таких же как в шаблоне
+			else if ((pattern[k] < 'A') || (pattern[k] > 'Z')) { //Р·Р°С‰РёС‚Р° РѕС‚ Р±СѓРєРІ С‚Р°РєРёС… Р¶Рµ РєР°Рє РІ С€Р°Р±Р»РѕРЅРµ
 				if(pattern[k] != strok[i]) {
 					dat.reset();
 					k = 0;
@@ -148,7 +148,7 @@ DATE TM::dat_date(string strok, string pattern) {//статический метод получения д
 					k++;
 				}
 			}
-			else if (k) { //чтобы постоянно не занулять
+			else if (k) { //С‡С‚РѕР±С‹ РїРѕСЃС‚РѕСЏРЅРЅРѕ РЅРµ Р·Р°РЅСѓР»СЏС‚СЊ
 					dat.reset();
 					k=0;
 			}
